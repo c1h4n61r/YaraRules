@@ -14,7 +14,7 @@ strings:
     $string4 = "target pid:"
     $string5 = "scan all processes:"
     $string6 = "<pid> <PATTERN>"
-    $string7 = "KAPTOXA" nocase
+    $string7 = "KAPTOXA"
 condition:
 	all of ($string*)
 }
