@@ -44,8 +44,6 @@ meta:
 	reference = "http://www.exploit-db.com/exploits/24905/"
 	date = "12/29/2013"
 strings:
-	$mz = { 4d 5a } // MZ
-    
 	$string1 = "v0pCr3w"
 	$string2 = "BENJOLSHELL"
 	$string3 = "EgY_SpIdEr"
@@ -65,12 +63,12 @@ strings:
 	$string17 = "Created by Kiss_Me"
 	$string18 = "Casper_Cell"
 	$string19 = "# [ CREWET ] #"
-    	$string20 = "BY MACKER"
-    	$string21 = "FraNGky"
-    	$string22 = "1dt.w0lf"
-    	$string23 = "Modification By iFX" nocase
+    $string20 = "BY MACKER"
+    $string21 = "FraNGky"
+    $string22 = "1dt.w0lf"
+    $string23 = "Modification By iFX" nocase
 condition:
-	not $mz at 0 and any of ($string*)
+	not uint16(0) == 0x5A4D and any of ($string*)
 }
 
 rule misc_php_exploits
@@ -81,7 +79,6 @@ meta:
 	data = "12/29/2013"
 	reference = "Virus Total Downloading PHP files and reviewing them..."
 strings:
-	$mz = { 4d 5a } // MZ
 	$php = "<?php"
 	$string1 = "eval(gzinflate(str_rot13(base64_decode("
 	$string2 = "eval(base64_decode("
@@ -95,9 +92,9 @@ strings:
 	$string10 = "preg_replace(\"/.*/\".'e',chr"
 	$string11 = "exp1ode"
 	$string12 = "cmdexec(\"killall ping;"
-	$string13 = "r57shell.php"
+	$string13 = "ms-mx.ru"
 condition:
-	not $mz at 0 and $php and any of ($string*)
+	not uint16(0) == 0x5A4D and $php and any of ($string*)
 }
 
 rule zend_framework
@@ -108,11 +105,10 @@ meta:
 	version = "0.3"
 	date = "12/29/2013"
 strings:
-	$mz = { 4d 5a } // MZ
 	$php = "<?php"
 	$string = "$zend_framework" nocase
 condition:
-	not $mz at 0 and $php and $string
+	not uint16(0) == 0x5A4D and $php and $string
 }
 
 rule jpg_web_shell
@@ -130,3 +126,59 @@ strings:
 condition:
 	($magic at 0) and 1 of ($string*)
 }  
+
+rule php_misc_shells
+{
+meta:
+	author = "@patrickrolsen"
+	version = "0.1"
+	data = "01/30/2014"
+	reference = "N/A"
+strings:
+	$php = "<?php"
+	$s1 = "second stage dropper"
+	$s2 = "SO dumped "
+	$s3 = "killall -9 "
+	$s4 = "1.sh"
+	$s5 = "faim.php"
+	$s6 = "file_get_contents("
+	$s7 = "$auth_pass ="
+	$s8 = "eval($" // Possible FPs
+	$s9 = "Find *config*.php"
+	$s10 = "Show running services"
+	$s11 = "Show computers"
+	$s12 = "Show active connections"
+	$s13 = "ARP Table"
+	$s14 = "Last Directory"
+	$s15 = ".htpasswd files"
+	$s16 = "suid files"
+	$s17 = "writable folders"
+	$s18 = "config* files"
+	$s19 = "show opened ports"
+	$s20 = ".pwd files"
+	$s21 = "locate config."
+	$s22 = "history files"
+condition:
+	not uint16(0) == 0x5A4D and $php and any of ($s*)
+}
+
+rule shell_names
+{
+meta:
+	author = "@patrickrolsen"
+	version = "0.1"
+	data = "01/30/2014"
+	reference = "N/A"
+strings:
+	$s1 = "faim.php"
+	$s2 = "css5.php"
+	$s3 = "groanea.php"
+	$s4 = "siler.php"
+	$s5 = "w.php"
+	$s6 = "atom-conf.php"
+	$s7 = "405.php"
+	$s8 = "pack2.php"
+	$s9 = "r57shell.php"
+condition:
+	any of ($s*)
+} 
