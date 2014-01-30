@@ -4,14 +4,93 @@ meta:
 	author = "@patrickrolsen"
 	reference = "Sysinternals PsExec Generic"
 	filetype = "EXE"
-	version = "0.1"
-	date = "1/29/2014"
+	version = "0.2"
+	date = "1/30/2014"
 strings:
-	$s1 = "Pstools\\psexec\\"
-	$s2 = "PsInfSvc"
-	$s3 = "%s -install"
-	$s4 = "%s -remove"
-	$s5 = "Usage: psexec"
+	$s1 = "PsInfSvc"
+	$s2 = "%s -install"
+	$s3 = "%s -remove"
+	$s4 = "psexec" nocase
+condition:
+	uint16(0) == 0x5A4D and (all of ($s*))
+}
+
+rule cmd_shell
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Windows CMD Shell"
+	filetype = "EXE"
+	version = "0.1"
+	date = "1/30/2014"
+strings:
+	$s1 = "cmd.pdb"
+	$s2 = "CMD Internal Error %s"
+condition:
+	uint16(0) == 0x5A4D and (all of ($s*)) and filesize <= 380KB
+}
+
+rule procdump
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Procdump"
+	filetype = "EXE"
+	version = "0.1"
+	date = "1/30/2014"
+strings:
+	$s1 = "\\Procdump\\"
+	$s2 = "procdump"
+	$s3 = "Process"
+condition:
+	uint16(0) == 0x5A4D and (all of ($s*))
+}
+
+rule nbtscan
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "nbtscan"
+	filetype = "EXE"
+	version = "0.1"
+	date = "1/30/2014"
+strings:
+	$s1 = "nbtscan" nocase
+	$s2 = "subnet /%d"
+	$s3 = "invalid target"
+	$s4 = "usage: %s"
+condition:
+	uint16(0) == 0x5A4D and (all of ($s*))
+}
+
+rule winrar_4xx
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "WinRar 4.11 CMD line version"
+	filetype = "EXE"
+	version = "0.1"
+	date = "1/30/2014"
+strings:
+	$s1 = "\\WinRAR\\rar\\"
+	$s2 = "WinRAR"
+condition:
+	uint16(0) == 0x5A4D and (all of ($s*))
+}
+
+rule unknown_creds_dump
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Misc. Creds Dump"
+	filetype = "EXE"
+	version = "0.1"
+	date = "1/30/2014"
+strings:
+	$s1 = "OpenProcessToken:%d"
+	$s2 = "LookupPrivilegeValue:%d"
+	$s3 = "AdjustTokenPrivilege:%d"
+	$s4 = "\\GetPassword\\"
 condition:
 	uint16(0) == 0x5A4D and (all of ($s*))
 }
