@@ -130,6 +130,7 @@ The packer rules I got from these sources:
 https://malwarecookbook.googlecode.com/svn-history/r5/trunk/3/4/packer.yara
 https://code.google.com/p/malware-lu/source/browse/tools/yara/packer.yara
 https://github.com/endgameinc/binarypig/blob/master/yara_rules/userdb_panda.yara
+https://raw.github.com/endgameinc/binarypig/master/yara_rules/packer.yara
 */
 
 rule _Armadillo_v171
