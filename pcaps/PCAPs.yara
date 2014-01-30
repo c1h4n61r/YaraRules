@@ -1,4 +1,5 @@
 rule FE_PCAPs
+{
 meta:
 	author = "@patrickrolsen"
 	maltype = "N/A"
