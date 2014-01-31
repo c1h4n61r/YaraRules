@@ -158,6 +158,7 @@ strings:
 	$s20 = ".pwd files"
 	$s21 = "locate config."
 	$s22 = "history files"
+	$s23 = "<?php @eval($_POST['cmd']);?>"
 condition:
 	not uint16(0) == 0x5A4D and $php and any of ($s*)
 }
@@ -179,6 +180,13 @@ strings:
 	$s7 = "405.php"
 	$s8 = "pack2.php"
 	$s9 = "r57shell.php"
+	$s10 = "shell.php"
+	$s11 = "dra.php"
+	$s12 = "lol.php"
+	$s13 = "php-backdoor.php"
+	$s14 = "aspxspy.aspx"
+	$s15 = "c99.php"
+	$s16 = "c99shell.php"
 condition:
 	any of ($s*)
-} 
+}

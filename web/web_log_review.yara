@@ -1,41 +1,53 @@
+include "web_shells.yara"
+
 rule web_log_review
 {
 meta:
 	author = "@patrickrolsen"
 	version = "0.1"
-	reference = "Key words in weblogs - Very likely FPs in here."
+	reference = "http://blog.shadowserver.org/2013/05/06/breaking-the-kill-chain-with-log-analysis/"
 	date = "2013-12-14"
 strings:
-	$s =   "GET /.htaccess" nocase
-	$s0 =  "GET /db/main.php" nocase
-	$s3 =  "GET /dbadmin/main.php" nocase
-	$s4 =  "GET /phpinfo.php" nocase
-	$s5 =  "GET /password" nocase
-	$s6 =  "GET /passwd" nocase
-	$s7 =  "GET /phpmyadmin2" nocase
-	$s8 =  "GET /c99shell.php" nocase
-	$s9 =  "GET /c99.php" nocase
-	$s10 = "GET /response.write" nocase
-	$s11 = "GET /&dir" nocase
-	$s12 = "backdoor.php" nocase
-	$s13 = "GET /.htpasswd" nocase
-	$s14 = "GET /htaccess.bak" nocase
-	$s15 = "GET /htaccess.txt" nocase
-	$s16 = "GET /.bash_history" nocase
-	$s17 = "GET /_sqladm" nocase
-	$s18 = "'$IFS/etc/privpasswd;'" nocase
-	$s19 = ";cat /tmp/config/usr.ini" nocase
-	$s20 = "v0pCr3w" nocase
-	$s21 = "eval(base64_decode" nocase
-	$s22 = "nob0dyCr3w" nocase
-	$s23 = "eval(gzinflate" nocase
-	$s24 = "Hacked by" fullword
-	$s25 = "%5Bcmd%5D" nocase
-	$s26 = "[cmd]" nocase
+	$s =   "GET /.htaccess"
+	$s0 =  "GET /db/main.php"
+	$s3 =  "GET /dbadmin/main.php"
+	$s4 =  "GET /phpinfo.php"
+	$s5 =  "GET /password"
+	$s6 =  "GET /passwd"
+	$s7 =  "GET /phpmyadmin2"
+	$s10 = "GET /response.write"
+	$s11 = "GET /&dir"
+	$s13 = "GET /.htpasswd"
+	$s14 = "GET /htaccess.bak"
+	$s15 = "GET /htaccess.txt"
+	$s16 = "GET /.bash_history"
+	$s17 = "GET /_sqladm"
+	$s18 = "'$IFS/etc/privpasswd;'"
+	$s19 = ";cat /tmp/config/usr.ini"
+	$s21 = "eval(base64_decode"
+	$s23 = "eval(gzinflate"
+	$s25 = "%5Bcmd%5D"
+	$s26 = "[cmd]"
 	$s27 = "union+select" nocase
 	$s28 = "UNION%20SELECT" nocase
-	$s29 = "(str_rot13" nocase
-
+	$s29 = "(str_rot13"
+	$s30 = "GET /private.key"
+	$s31 = "GET /database.inc"
+	$s32 = "GET /webstats.html"
+	$s33 = "GET /schema.sql"
+	$s34 = "GET /customers"
+	$s35 = "GET /images/passwords.mdb"
+	$s36 = "GET /web-console"
+	$s37 = "GET /phpmyadmin/main.php"
+	$s38 = "GET /mysql/main.php"
+	$s39 = "GET /memberlist"
+	$s40 = "GET /logs"
+	$s41 = "GET /%26cat%20%2fetc%2fpasswd"
+	$s42 = "GET /New%20folder%20(2)"
+	$s43 = "GET /response.write(9674459*9948960)"
+	$s44 = "GET /index.php?"
+	$s45 = "concat(user_login"
+	$s46 = "),user_pass)"
 condition:
 	any of ($s*)
 }
