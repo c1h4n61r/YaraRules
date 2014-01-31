@@ -48,6 +48,7 @@ strings:
 	$s44 = "GET /index.php?"
 	$s45 = "concat(user_login"
 	$s46 = "),user_pass)"
+	$s47 = "sqlmap"
 condition:
 	any of ($s*)
 }
