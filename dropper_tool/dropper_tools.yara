@@ -185,10 +185,9 @@ meta:
 	version = "0.1"
 	date = "1/30/2014"
 strings:
-	$s1 = "BCP"
+	$s1 = "BCP" nocase
 	$s2 = "SQLState = %s"
 	$s3 = "Warning = %s"
-	$s4 = "bcp."
 	$s5 = ";database="
 	$s6 = "FIRE_TRIGGERS"
 
