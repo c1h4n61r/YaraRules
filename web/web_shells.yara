@@ -177,20 +177,20 @@ rule shell_names
 {
 meta:
 	author = "@patrickrolsen"
-	version = "0.1"
-	data = "01/30/2014"
+	version = "0.2"
+	data = "02/01/2014"
 	reference = "N/A"
 strings:
 	$s1 = "faim.php"
 	$s2 = "css5.php"
 	$s3 = "groanea.php"
 	$s4 = "siler.php"
-	$s5 = "w.php"
+	$s5 = "w.php" fullword
 	$s6 = "atom-conf.php"
 	$s7 = "405.php"
 	$s8 = "pack2.php"
 	$s9 = "r57shell.php"
-	$s10 = "shell.php"
+	$s10 = "shell.php" fullword
 	$s11 = "dra.php"
 	$s12 = "lol.php"
 	$s13 = "php-backdoor.php"
@@ -198,5 +198,5 @@ strings:
 	$s15 = "c99.php"
 	$s16 = "c99shell.php"
 condition:
-	any of ($s*)
+	not uint16(0) == 0x5A4D and any of ($s*)
 }
