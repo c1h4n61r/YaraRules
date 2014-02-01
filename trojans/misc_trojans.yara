@@ -4,7 +4,7 @@ meta:
 	author = "@patrickrolsen"
 	maltype = "Sneakernet Trojan"
 	version = "0.1"
-	reference = "http://www.fidelissecurity.com/webfm_send/372" 
+	reference = "http://www.fidelissecurity.com/webfm_send/375" 
 	date = "01/30/2014"
 strings:
     $s1 = "Mtx_Sp_On_PC_1_2_8"
