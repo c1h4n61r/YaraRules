@@ -14,6 +14,7 @@ strings:
 	$s10 = "%appdata%" wide
 	$s11 = "%programdata%" wide
 	$s12 = "%localappdata%" wide
+	$s13 = ".cpl" wide
 condition:
 	($magic at 0) and any of ($s*)
 }
