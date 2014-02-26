@@ -71,6 +71,7 @@ strings:
 	$s24 = "Dumped by C99madShell.SQL"
 	$s25 = "Hacked By Alaa"
 	$s26 = "XXx_Death_xXX"
+	$s27 = "zehir3"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
