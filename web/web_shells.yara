@@ -1,4 +1,4 @@
-rule php_exploit_GIF
+rule GIF_exploit
 {
 meta:
 	author = "@patrickrolsen"
@@ -14,9 +14,8 @@ strings:
 	$s4 = "(base64_decode"
 	$s5 = "<?php"
 	$s6 = "(str_rot13"
-	$s7 = {3c 3f 70 68 70} // <?php
-	$s8 = ".exe"
-	$s9 = ".dll"
+	$s7 = ".exe"
+	$s8 = ".dll"
 condition:
 	($magic at 0) and any of ($s*)
 }
