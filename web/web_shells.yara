@@ -15,6 +15,8 @@ strings:
 	$s5 = "<?php"
 	$s6 = "(str_rot13"
 	$s7 = {3c 3f 70 68 70} // <?php
+	$s8 = ".exe"
+	$s9 - ".dll"
 condition:
 	($magic at 0) and any of ($s*)
 }
