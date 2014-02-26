@@ -41,9 +41,9 @@ rule web_shell_crews
 meta:
 	author = "@patrickrolsen"
 	maltype = "Web Shell Crews"
-	version = "0.4"
+	version = "0.5"
 	reference = "http://www.exploit-db.com/exploits/24905/"
-	date = "12/29/2013"
+	date = "02/26/2014"
 strings:
 	$s1 = "v0pCr3w"
 	$s2 = "BENJOLSHELL"
@@ -64,12 +64,13 @@ strings:
 	$s17 = "Created by Kiss_Me"
 	$s18 = "Casper_Cell"
 	$s19 = "# [ CREWET ] #"
-    $s20 = "BY MACKER"
-    $s21 = "FraNGky"
-    $s22 = "1dt.w0lf"
-    $s23 = "Modification By iFX"
-    $s24 = "Dumped by C99madShell.SQL"
-    $s25 = "Hacked By Alaa"
+	$s20 = "BY MACKER"
+	$s21 = "FraNGky"
+	$s22 = "1dt.w0lf"
+	$s23 = "Modification By iFX"
+	$s24 = "Dumped by C99madShell.SQL"
+	$s25 = "Hacked By Alaa"
+	$s26 = "XXx_Death_xXX"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
@@ -163,14 +164,14 @@ strings:
 	$s22 = "history files"
 	$s23 = "<?php @eval($_POST['cmd']);?>"
 	$s24 = "securityprobe.net"
-    $s25 = "ccteam.ru"
-    $s26 = "c99sh_sources"
-    $s27 = "c99mad"
-    $s28 = "31373"
-    $s29 = "c99_sess_put"
-    $s30 = "(\"fs_move_"
-    $s31 = "c99sh_bindport_"
-    $s32 = "mysql_dump"
+	$s25 = "ccteam.ru"
+	$s26 = "c99sh_sources"
+	$s27 = "c99mad"
+	$s28 = "31373"
+	$s29 = "c99_sess_put"
+	$s30 = "(\"fs_move_"
+	$s31 = "c99sh_bindport_"
+	$s32 = "mysql_dump"
 condition:
 	not uint16(0) == 0x5A4D and $php and any of ($s*)
 }
