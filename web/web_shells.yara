@@ -72,6 +72,7 @@ strings:
 	$s25 = "Hacked By Alaa"
 	$s26 = "XXx_Death_xXX"
 	$s27 = "zehir3"
+	$s28 = "zehirhacker"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
