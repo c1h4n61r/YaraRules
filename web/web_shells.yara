@@ -103,6 +103,7 @@ strings:
 	$s11 = "exp1ode"
 	$s12 = "cmdexec(\"killall ping;"
 	$s13 = "ms-mx.ru"
+	$s14 = "N3tsh_"
 condition:
 	not uint16(0) == 0x5A4D and $php and any of ($s*)
 }
@@ -178,6 +179,7 @@ strings:
 	$s30 = "(\"fs_move_"
 	$s31 = "c99sh_bindport_"
 	$s32 = "mysql_dump"
+	$s33 = "Dumped by c100.SQL"
 condition:
 	not uint16(0) == 0x5A4D and $php and any of ($s*)
 }
