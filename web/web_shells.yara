@@ -73,6 +73,10 @@ strings:
 	$s26 = "XXx_Death_xXX"
 	$s27 = "zehir3"
 	$s28 = "zehirhacker"
+	$s29 = "Shell Tcrew"
+	$s30 = "w4ck1ng"
+	$s31 = "TriCkz"
+	$s32 = "TambukCrew"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
@@ -202,6 +206,7 @@ strings:
 	$s14 = "aspxspy.aspx"
 	$s15 = "c99.php"
 	$s16 = "c99shell.php"
+	$s17 = "fx29sh.php"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
