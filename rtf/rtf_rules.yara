@@ -43,7 +43,6 @@ strings:
 	$doc = {D0 CF 11 E0} //DOCFILE0
 	$s1 = "dw20.exe"
 	$s2 = "cmd /"
-	$s3 = "cmd /c temp"
 condition:
     ($doc at 0) and (1 of ($s*))
 }
