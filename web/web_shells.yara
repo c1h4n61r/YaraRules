@@ -138,15 +138,13 @@ condition:
 	($magic at 0) and 1 of ($s*)
 }  
 
-rule php_misc_shells
+rule misc_shells
 {
 meta:
 	author = "@patrickrolsen"
-	version = "0.1"
-	data = "01/30/2014"
-	reference = "N/A"
+	version = "0.2"
+	data = "06/18/2014"
 strings:
-	$php = "<?php"
 	$s1 = "second stage dropper"
 	$s2 = "SO dumped "
 	$s3 = "killall -9 "
@@ -180,8 +178,28 @@ strings:
 	$s31 = "c99sh_bindport_"
 	$s32 = "mysql_dump"
 	$s33 = "Dumped by c100.SQL"
+	$s34 = "Hacker By Task QQ"
+	$s35 = "JyHackTeam"
+	$s36 = "byMesaj"
+	$s37 = "by STHx"
+	$s38 = "hacker!@#"
+	$s39 = "Fucked by 7sign"
+	$s40 = "Hacked By:NsQk"
+	$s41 = "Ch1na HLD Secur1ty Team"
+	$s42 = "hackxsy.net"
+	$s43 = "[Black Tie]"
+	$s44 = "[ Black Tie ]"
+	$s45 = "X4ck By Death"
+	$s46 = "Recoded bY 0x14113"
+	$s47 = "0x14113_Server Shell"
+	$s48 = "BY 0x14113"
+	$s49 = "[ 0x14113 ASP Shell ]"
+	$s50 = "ASP Shell"
+	$s51 = "Hacked by @iSecGroup"
+	$s52 = "@iSecGroup"
+	$s53 = "Lulzsecroot"
 condition:
-	not uint16(0) == 0x5A4D and $php and any of ($s*)
+	not uint16(0) == 0x5A4D and any of ($s*)
 }
 
 rule shell_names
