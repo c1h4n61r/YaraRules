@@ -15,6 +15,80 @@ condition:
 	uint16(0) == 0x5A4D and (all of ($s*))
 }
 
+rule monitor_tool_pos
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "POS malware - Monitoring Tool??"
+strings:
+	$s1 = "RCPT TO"
+	$s2 = "MAIL FROM"
+	$s3 = "AUTH LOGIN"
+	$s4 = "Reply-To"
+	$s5 = "X-Mailer"
+	$s6 = "crypto"
+	$s7 = "test335.txt" wide
+	$s8 = "/c del"
+condition:
+	uint16(0) == 0x5A4D and 7 of ($s*)
+}
+
+rule blazingtools
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Blazing Tools - http://www.blazingtools.com (Keyloggers)"
+strings:
+	$s1 = "blazingtools.com"
+	$s2 = "Keystrokes" wide
+	$s3 = "Screenshots" wide
+condition:
+	uint16(0) == 0x5A4D and all of ($s*)
+}
+
+rule keyfinder_tool
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Magical Jelly Bean KeyFinder"
+strings:
+	$s1 = "chgxp.vbs"
+	$s2 = "officekey.exe"
+	$s3 = "findkey.exe"
+	$s4 = "xpkey.exe"
+condition:
+	uint16(0) == 0x5A4D and 2 of ($s*)
+}
+
+rule pstgdump
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "pstgdump"
+strings:
+	$s1 = "fgdump\\pstgdump"
+	$s2 = "pstgdump"
+	$s3 = "Outlook"
+condition:
+	uint16(0) == 0x5A4D and all of ($s*)
+}
+
+rule dump_tool
+{
+meta:
+	author = "@patrickrolsen"
+	reference = "Related to pwdump6 and fgdump tools"
+strings:
+	$s1 = "lsremora"
+	$s2 = "servpw"
+	$s3 = "failed: %d"
+	$s4 = "fgdump"
+	$s5 = "fgexec"
+	$s6 = "fgexecpipe"
+condition:
+	uint16(0) == 0x5A4D and 3 of ($s*)
+}
+
 rule cmd_shell
 {
 meta:
