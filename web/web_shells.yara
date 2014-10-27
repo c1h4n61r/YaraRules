@@ -1,19 +1,3 @@
-rule GIF_PHP_shell
-{
-meta:
-	author = "@patrickrolsen"
-	maltype = "GIF Exploits"
-	version = "0.1"
-	reference = "code.google.com/p/caffsec-malware-analysis"
-	date = "2013-12-14"
-strings:
-	$magic = {47 49 46 38 ?? 61} // GIF8<version>a
-	$s1 = "<?php"
-	$s2 = "eval($_"
-condition:
-	($magic at 0) and any of ($s*)
-}
-
 rule GIF_exploit
 {
 meta:
@@ -32,6 +16,7 @@ strings:
 	$s6 = "(str_rot13"
 	$s7 = ".exe"
 	$s8 = ".dll"
+	$s9 = "eval($_"
 condition:
 	($magic at 0) and any of ($s*)
 }
