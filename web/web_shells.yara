@@ -1,3 +1,19 @@
+rule GIF_PHP_shell
+{
+meta:
+	author = "@patrickrolsen"
+	maltype = "GIF Exploits"
+	version = "0.1"
+	reference = "code.google.com/p/caffsec-malware-analysis"
+	date = "2013-12-14"
+strings:
+	$magic = {47 49 46 38 ?? 61} // GIF8<version>a
+	$s1 = "<?php"
+	$s2 = "eval($_"
+condition:
+	($magic at 0) and any of ($s*)
+}
+
 rule GIF_exploit
 {
 meta:
@@ -160,6 +176,8 @@ strings:
 	$s112 = "AventGrup"
 	$s113 = "Sincap"
 	$s114 = "zyklon"
+	$s115 = "lovealihack"
+	$s116 = "alihack"
 condition:
 	not uint16(0) == 0x5A4D and any of ($s*)
 }
